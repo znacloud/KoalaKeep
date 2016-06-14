@@ -1,4 +1,4 @@
-package com.github.znacloud.koalakeep;
+package com.github.znacloud.koalakeep.ui;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,6 +10,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+
+import com.github.znacloud.koalakeep.adapter.home.CardAdapter;
+import com.github.znacloud.koalakeep.R;
+import com.github.znacloud.koalakeep.adapter.home.MultiCardData;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -40,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                            Thread.sleep(5000);
+                            Thread.sleep(3000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -72,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
+                    mAdapter.addOneDataFirst(new MultiCardData<String>(MultiCardData.TYPE_HEADER,"header"));
                     mSwipeRefreshLayout.setRefreshing(false);
                     break;
                 default:

@@ -10,20 +10,20 @@
         android:layout_marginBottom="@dimen/margin_small"
         android:layout_marginLeft="@dimen/margin_medium"
         android:layout_marginRight="@dimen/margin_medium"
-        app:cardElevation="2dp"
-        app:cardPreventCornerOverlap="true">
+        app:cardElevation="@dimen/elevation_little"
+        app:cardPreventCornerOverlap="true"
+        app:cardBackgroundColor="@color/card_bg_color">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/search_input_bg">
+            android:layout_height="wrap_content">
             <TextView
                 style="@style/HintTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-
-                android:drawableLeft="@drawable/search_micro_white"
+                android:drawablePadding="@dimen/padding_small"
+                android:drawableLeft="@drawable/ic_action_search_gray_light"
                 android:gravity="center"
                 android:padding="@dimen/activity_horizontal_margin"
                 android:text="@string/search" />

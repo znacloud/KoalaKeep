@@ -5,7 +5,30 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <!-- Text size -->
-    <dimen name="textSizeNormal">14sp</dimen>
+    <dimen name="text_size_xlittle">6sp</dimen>
+    <dimen name="text_size_little">10sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_normal">14sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_xlarge">24sp</dimen>
+
+    <!-- Margin and Padding -->
     <dimen name="margin_small">4dp</dimen>
     <dimen name="margin_medium">8dp</dimen>
+    <dimen name="margin_large">12dp</dimen>
+    <dimen name="margin_xlarge">16dp</dimen>
+
+    <dimen name="padding_small">4dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding_large">12dp</dimen>
+    <dimen name="padding_xlarge">16dp</dimen>
+
+    <dimen name="elevation_little">2dp</dimen>
+
+
+    <dimen name="card_min_height">128dp</dimen>
+    <dimen name="card_max_height">192dp</dimen>
+    <dimen name="card_menu_width">80dp</dimen>
+
 </resources>

@@ -4,9 +4,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.github.znacloud.koalakeep.R;
+import com.github.znacloud.koalakeep.view.GeneralCardItemLayout;
 
 import java.util.ArrayList;
 
@@ -26,8 +26,13 @@ public class CardAdapter extends RecyclerView.Adapter<MultiCardViewHolder>{
         View itemView = null;
         MultiCardViewHolder viewHolder = null;
         if(viewType == MultiCardData.TYPE_HEADER){
-            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_input_layout,null);
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_item,null);
+            itemView.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             viewHolder = new HeaderItemViewHolder(itemView);
+        }else if(viewType == MultiCardData.TYPE_CARD_TEXT){
+            itemView = new GeneralCardItemLayout(parent.getContext());
+            itemView.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            viewHolder = new GeneryItemViewHolder(itemView);
         }
 
         return  viewHolder;
@@ -35,7 +40,7 @@ public class CardAdapter extends RecyclerView.Adapter<MultiCardViewHolder>{
 
     @Override
     public void onBindViewHolder(MultiCardViewHolder holder, int position) {
-
+        holder.bindItemData(mDatas.get(position));
     }
 
     @Override

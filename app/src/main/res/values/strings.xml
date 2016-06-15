@@ -2,4 +2,14 @@
     <string name="app_name">考拉笔记</string>
     <string name="action_settings">设置</string>
     <string name="search">搜索</string>
+    <string name="title_sample">考拉笔记|生活是一件艺术品</string>
+    <string name="tip_private">私</string>
+    <string name="content_sample">
+        你给生活意境，生活才能给你风景。生活的快乐与否，是由自己决定的，确切来说，是由心态决定的。生活是一件艺术品，每个人都有自己认为最美的一笔，每个人也都有认为不尽如人意的一笔，关键在于你怎样看待。与其整日被庸人自扰的愁闷所困扰，不如以一种顺其自然的态度淡看一切。接受已经发生的事实，是克服随之而来的任何困难的第一步。为过去担惊受怕，为未来忐忑不安，生活也只能颠沛流离。我们需要的只是一点豁达，让一切都顺其自然吧。</string>
+    <string name="from_sample">测试数据</string>
+    <string name="creator_sample">考拉</string>
+    <string name="menu_item_share">分享</string>
+    <string name="menu_item_edit">编辑</string>
+    <string name="menu_item_private">私密</string>
+    <string name="menu_item_delete">删除</string>
 </resources>

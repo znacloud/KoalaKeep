@@ -12,8 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
-        android:paddingTop="@dimen/margin_small"
-        android:paddingBottom="@dimen/margin_small"
+        android:scrollbars="vertical"
+        android:scrollbarStyle="insideOverlay"
+        android:paddingTop="@dimen/padding_small"
+        android:paddingBottom="@dimen/padding_small"
             />
 
 </android.support.v4.widget.SwipeRefreshLayout>

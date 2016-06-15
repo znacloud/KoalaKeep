@@ -14,6 +14,7 @@ import android.view.View;
 import com.github.znacloud.koalakeep.adapter.home.CardAdapter;
 import com.github.znacloud.koalakeep.R;
 import com.github.znacloud.koalakeep.adapter.home.MultiCardData;
+import com.github.znacloud.koalakeep.entity.CardItemInfo;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -76,7 +77,10 @@ public class MainActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
-                    mAdapter.addOneDataFirst(new MultiCardData<String>(MultiCardData.TYPE_HEADER,"header"));
+                    if(mAdapter.getItemCount() == 0) {
+                        mAdapter.addOneDataFirst(new MultiCardData<String>(MultiCardData.TYPE_HEADER, "header"));
+                    }
+                    mAdapter.addOneData(1, new MultiCardData(MultiCardData.TYPE_CARD_TEXT,CardItemInfo.createTestItem(MainActivity.this)));
                     mSwipeRefreshLayout.setRefreshing(false);
                     break;
                 default:

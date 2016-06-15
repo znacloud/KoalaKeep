@@ -3,4 +3,6 @@
     <string name="app_name">考拉笔记</string>
     <string name="action_settings">设置</string>
     <string name="search">搜索</string>
+    <string name="title_sample">考拉笔记|生活是一件艺术品</string>
+    <string name="menu_item_edit">编辑</string>
 </resources>

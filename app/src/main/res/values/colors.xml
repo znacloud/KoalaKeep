@@ -3,12 +3,17 @@
     <!-- Theme Color -->
     <color name="colorPrimary">#fbfffc</color>
     <color name="colorPrimaryDark">#eef2ef</color>
-    <color name="colorAccent">#ffd47f</color>
+    <color name="colorAccent">#c28101</color>
     <color name="colorTheme">#8bc34a</color>
 
     <!-- Text color -->
-    <color name="textColorGrayLight">#dedede</color>
-    <color name="textColorGray">#bfbfbf</color>
-    <color name="textColorGrayDark">#999999</color>
+    <color name="colorGrayLight">#dedede</color>
+    <color name="colorGray">#9c9c9c</color>
+    <color name="colorGrayDark">#535353</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#ffffff</color>
+
+    <!-- Background color -->
+    <color name="colorRedDark">#b40000</color>
 
 </resources>

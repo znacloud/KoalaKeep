@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+    <TextView
+        android:id="@+id/tv_menu_share"
+        style="@style/MenuItemTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_item_share" />
+
+    <TextView
+        android:id="@+id/tv_menu_edit"
+        android:enabled="false"
+        style="@style/MenuItemTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_item_edit" />
+
+    <CheckedTextView
+        android:id="@+id/tv_menu_private"
+        android:checked="true"
+        style="@style/MenuItemTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_item_private" />
+
+    <TextView
+        android:id="@+id/tv_menu_delete"
+        style="@style/MenuItemTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_item_delete" />
+
+
+</LinearLayout>

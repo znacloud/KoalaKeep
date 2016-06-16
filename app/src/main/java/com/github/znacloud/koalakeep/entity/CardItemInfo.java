@@ -24,7 +24,9 @@ public class CardItemInfo {
         info.setTitle(context.getResources().getString(R.string.title_sample));
         String content = context.getResources().getString(R.string.content_sample);
         info.setContent(content.substring(0,10+(int)(Math.random()*(content.length()-10))));
-        info.setPoster(null);
+        info.setPoster(Math.random()*100 > 70 ?null :
+                Math.random()*100 > 30 ? "http://a.hiphotos.baidu.com/image/pic/item/1c950a7b02087bf442c2b1c9fad3572c11dfcfe0.jpg" :
+                        "http://g.hiphotos.baidu.com/image/pic/item/0d338744ebf81a4cdfd76fe9df2a6059252da62d.jpg");
         info.setPrivate(Math.random()*100 > 50 ? true:false);
         info.setFrom(context.getResources().getString(R.string.from_sample));
         info.setCreator(context.getResources().getString(R.string.creator_sample));

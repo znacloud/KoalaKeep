@@ -2,6 +2,7 @@ package com.github.znacloud.koalakeep.view;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,8 +16,10 @@ import android.widget.ImageView;
 import android.widget.Scroller;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
 import com.github.znacloud.koalakeep.R;
 import com.github.znacloud.koalakeep.entity.CardItemInfo;
+import com.github.znacloud.koalakeep.network.VolleyManager;
 
 /**
  * Created by Zengnianan on 2016/6/15.
@@ -48,6 +51,8 @@ public class GeneralCardItemLayout extends FrameLayout implements GeneralRecycle
     private int flag = 0;
     private int mTouchSlop = 0;
     private boolean mIsClick = true;
+    private ImageView mPosterIv;
+    private ImageLoader mImageLoader;
 
     public GeneralCardItemLayout(Context context) {
         super(context);
@@ -71,7 +76,9 @@ public class GeneralCardItemLayout extends FrameLayout implements GeneralRecycle
         mVociTracker = VelocityTracker.obtain();
         mTouchSlop = mViewConfig.getScaledTouchSlop();
 
-        LayoutInflater.from(context).inflate(R.layout.text_card_item,this,true);
+        mImageLoader = VolleyManager.getInstance(context).getImageLoader();
+
+        LayoutInflater.from(context).inflate(R.layout.general_card_item,this,true);
         initViews();
 
         initEvent();
@@ -82,6 +89,7 @@ public class GeneralCardItemLayout extends FrameLayout implements GeneralRecycle
     private void initViews() {
         mContentLayout = (CardView)findViewById(R.id.cv_content);
         mTitleTv = (TextView)findViewById(R.id.tv_card_title);
+        mPosterIv = (ImageView)findViewById(R.id.iv_poster);
         mMenuIv = (ImageView) findViewById(R.id.iv_card_menu);
         mExtraTv = (TextView) findViewById(R.id.tv_extra);
         mContentTv = (TextView) findViewById(R.id.tv_card_content);
@@ -228,7 +236,24 @@ public class GeneralCardItemLayout extends FrameLayout implements GeneralRecycle
     public void bindViewData(CardItemInfo data) {
         CardItemInfo info = data;
         mTitleTv.setText(info.getTitle());
-        mContentTv.setText(info.getContent());
+        String content = info.getContent();
+        if(TextUtils.isEmpty(content)){
+            mContentTv.setVisibility(GONE);
+        }else {
+            mContentTv.setText(content);
+            mContentTv.setVisibility(VISIBLE);
+        }
+
+        String posterUrl = data.getPoster();
+        if(TextUtils.isEmpty(posterUrl)){
+            mPosterIv.setVisibility(GONE);
+            //无图片时，文字内容显示多一些
+            mContentTv.setMaxLines(getResources().getInteger(R.integer.card_max_line));
+        }else{
+            mImageLoader.get(posterUrl,ImageLoader.getImageListener(mPosterIv,0,0));
+            mPosterIv.setVisibility(VISIBLE);
+            mContentTv.setMaxLines(getResources().getInteger(R.integer.card_min_line));
+        }
         mExtraTv.setVisibility(info.isPrivate() ? View.VISIBLE:View.INVISIBLE);
     }
 

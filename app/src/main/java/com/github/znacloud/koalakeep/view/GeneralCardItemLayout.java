@@ -11,6 +11,7 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.CheckedTextView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Scroller;
@@ -28,7 +29,7 @@ import com.github.znacloud.koalakeep.network.VolleyManager;
  * @author Zengnianan
  * @since 2016/6/15
  */
-public class GeneralCardItemLayout extends FrameLayout implements GeneralRecycleView.Openable{
+public class GeneralCardItemLayout extends FrameLayout implements GeneralRecycleView.Openable, View.OnClickListener {
     private static final int DIRECT_RIGHT = 0;
     private static final int DIRECT_LEFT = 1;
     private static final int DIRECT_NULL = -1;
@@ -53,6 +54,11 @@ public class GeneralCardItemLayout extends FrameLayout implements GeneralRecycle
     private boolean mIsClick = true;
     private ImageView mPosterIv;
     private ImageLoader mImageLoader;
+    private TextView mShareTv;
+    private TextView mEditTv;
+    private CheckedTextView mPrivateCTv;
+    private TextView mDeleteTv;
+    private CardItemInfo mItemInfo;
 
     public GeneralCardItemLayout(Context context) {
         super(context);
@@ -93,15 +99,19 @@ public class GeneralCardItemLayout extends FrameLayout implements GeneralRecycle
         mMenuIv = (ImageView) findViewById(R.id.iv_card_menu);
         mExtraTv = (TextView) findViewById(R.id.tv_extra);
         mContentTv = (TextView) findViewById(R.id.tv_card_content);
+
+        //menu item
+        mShareTv = (TextView)findViewById(R.id.tv_menu_share);
+        mEditTv = (TextView)findViewById(R.id.tv_menu_edit);
+        mPrivateCTv = (CheckedTextView)findViewById(R.id.tv_menu_private);
+        mDeleteTv = (TextView)findViewById(R.id.tv_menu_delete);
     }
 
     private void initEvent() {
-        mMenuIv.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setOpen(!isMenuShown());
-            }
-        });
+        mMenuIv.setOnClickListener(this);
+        mShareTv.setOnClickListener(this);
+        mPrivateCTv.setOnClickListener(this);
+        mDeleteTv.setOnClickListener(this);
 
         mContentLayout.setOnClickListener(new OnClickListener() {
             @Override
@@ -234,9 +244,9 @@ public class GeneralCardItemLayout extends FrameLayout implements GeneralRecycle
     }
 
     public void bindViewData(CardItemInfo data) {
-        CardItemInfo info = data;
-        mTitleTv.setText(info.getTitle());
-        String content = info.getContent();
+        mItemInfo = data;
+        mTitleTv.setText(mItemInfo.getTitle());
+        String content = mItemInfo.getContent();
         if(TextUtils.isEmpty(content)){
             mContentTv.setVisibility(GONE);
         }else {
@@ -254,7 +264,14 @@ public class GeneralCardItemLayout extends FrameLayout implements GeneralRecycle
             mPosterIv.setVisibility(VISIBLE);
             mContentTv.setMaxLines(getResources().getInteger(R.integer.card_min_line));
         }
-        mExtraTv.setVisibility(info.isPrivate() ? View.VISIBLE:View.INVISIBLE);
+
+        if(mItemInfo.isPrivate()) {
+            mExtraTv.setVisibility(VISIBLE);
+            mPrivateCTv.setChecked(true);
+        }else{
+            mExtraTv.setVisibility(INVISIBLE);
+            mPrivateCTv.setChecked(false);
+        }
     }
 
     @Override
@@ -275,5 +292,23 @@ public class GeneralCardItemLayout extends FrameLayout implements GeneralRecycle
     @Override
     public boolean isOpen() {
         return isMenuShown();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.iv_card_menu){
+            setOpen(!isMenuShown());
+        }else if(v.getId() == R.id.tv_menu_share){
+            //TODO:share
+        }else if(v.getId() == R.id.tv_menu_edit){
+            //TODO:edit
+        }else if(v.getId() == R.id.tv_menu_private){
+            mPrivateCTv.setChecked(!mItemInfo.isPrivate());
+            mItemInfo.setPrivate(!mItemInfo.isPrivate());
+            mExtraTv.setVisibility(mItemInfo.isPrivate() ? VISIBLE : INVISIBLE);
+            setOpen(false);
+        }else if(v.getId() == R.id.tv_menu_delete){
+            //TODO:delete
+        }
     }
 }

@@ -25,7 +25,7 @@ import com.github.znacloud.koalakeep.entity.CardItemInfo;
  * @author Zengnianan
  * @since 2016/6/15
  */
-public class GeneralCardItemLayout extends FrameLayout{
+public class GeneralCardItemLayout extends FrameLayout implements GeneralRecycleView.Openable{
     private static final int DIRECT_RIGHT = 0;
     private static final int DIRECT_LEFT = 1;
     private static final int DIRECT_NULL = -1;
@@ -47,6 +47,7 @@ public class GeneralCardItemLayout extends FrameLayout{
     private int mDirection = DIRECT_NULL;
     private int flag = 0;
     private int mTouchSlop = 0;
+    private boolean mIsClick = true;
 
     public GeneralCardItemLayout(Context context) {
         super(context);
@@ -90,17 +91,14 @@ public class GeneralCardItemLayout extends FrameLayout{
         mMenuIv.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isMenuShown()) {
-                    mContentLayout.animate()
-                            .setDuration(ANIM_DURATION)
-                            .setInterpolator(new DecelerateInterpolator())
-                            .translationX(0);
-                }else{
-                    mContentLayout.animate()
-                            .setDuration(ANIM_DURATION)
-                            .setInterpolator(new DecelerateInterpolator())
-                            .translationX(-mTranslateX);
-                }
+                setOpen(!isMenuShown());
+            }
+        });
+
+        mContentLayout.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG,"got to detail page");
             }
         });
 
@@ -117,11 +115,20 @@ public class GeneralCardItemLayout extends FrameLayout{
                     mScroller.forceFinished(true);
                     mScroller.abortAnimation();
                     flag = 0;
-
+                    mIsClick = true;
                     return true;
                 }else if(action == MotionEvent.ACTION_MOVE){
                     float x = event.getRawX();
                     float y = event.getRawY();
+
+                    if(Math.abs(y-mStartY) < mTouchSlop
+                            && Math.abs(x-mStartX) < mTouchSlop){
+                        //Do nothing
+                        return true;
+                    }
+
+                    mIsClick = false;
+
                     mVociTracker.addMovement(event);
                     //竖向滑动不处理
                     if(flag == 0
@@ -161,6 +168,11 @@ public class GeneralCardItemLayout extends FrameLayout{
                     return true;
 
                 }else if(action==MotionEvent.ACTION_UP){
+                    if(mIsClick){
+                        mContentLayout.performClick();
+                        return false;
+                    }
+
                     mVociTracker.computeCurrentVelocity(1000);
                     float vX = mVociTracker.getXVelocity();
                     float transX = mContentLayout.getTranslationX();
@@ -209,7 +221,7 @@ public class GeneralCardItemLayout extends FrameLayout{
     }
 
     private boolean isMenuShown() {
-        if(mContentLayout.getTranslationX() == -mTranslateX) return true;
+        if(mContentLayout.getTranslationX() < -mTranslateX+mTouchSlop) return true;
         return false;
     }
 
@@ -218,5 +230,25 @@ public class GeneralCardItemLayout extends FrameLayout{
         mTitleTv.setText(info.getTitle());
         mContentTv.setText(info.getContent());
         mExtraTv.setVisibility(info.isPrivate() ? View.VISIBLE:View.INVISIBLE);
+    }
+
+    @Override
+    public void setOpen(boolean open) {
+        if(!open) {
+            mContentLayout.animate()
+                    .setDuration(ANIM_DURATION)
+                    .setInterpolator(new DecelerateInterpolator())
+                    .translationX(0);
+        }else{
+            mContentLayout.animate()
+                    .setDuration(ANIM_DURATION)
+                    .setInterpolator(new DecelerateInterpolator())
+                    .translationX(-mTranslateX);
+        }
+    }
+
+    @Override
+    public boolean isOpen() {
+        return isMenuShown();
     }
 }

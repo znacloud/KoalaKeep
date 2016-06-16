@@ -9,19 +9,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.github.znacloud.koalakeep.adapter.home.CardAdapter;
 import com.github.znacloud.koalakeep.R;
 import com.github.znacloud.koalakeep.adapter.home.MultiCardData;
 import com.github.znacloud.koalakeep.entity.CardItemInfo;
+import com.github.znacloud.koalakeep.view.GeneralRecycleView;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     private SwipeRefreshLayout mSwipeRefreshLayout;
-    private RecyclerView mRecyleView;
+    private GeneralRecycleView mRecyleView;
     private LinearLayoutManager mLayoutManger;
     private CardAdapter mAdapter;
     private MyHandler mMyhandler;
@@ -55,11 +57,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mRecyleView = (RecyclerView)findViewById(R.id.recyle_view);
+        mRecyleView = (GeneralRecycleView)findViewById(R.id.recyle_view);
         mLayoutManger = new LinearLayoutManager(this);
         mRecyleView.setLayoutManager(mLayoutManger);
         mAdapter= new CardAdapter();
         mRecyleView.setAdapter(mAdapter);
+        mRecyleView.setSingleOpenEnable(true);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

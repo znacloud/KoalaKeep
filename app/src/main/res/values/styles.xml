@@ -3,9 +3,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorThemePrimary</item>
+        <item name="colorPrimaryDark">@color/colorThemePrimaryDark</item>
+        <item name="colorAccent">@color/colorThemeAccent</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -22,35 +22,34 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="HintTextStyle">
-        <item name="android:textColor">@color/colorGrayLight</item>
+        <item name="android:textColor">@color/colorTextGrayLight</item>
         <item name="android:textSize">@dimen/text_size_normal</item>
     </style>
 
     <style name="HeaderTextStyle">
-        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textColor">@color/colorTextBlack</item>
         <item name="android:textSize">@dimen/text_size_large</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="ExtraTextStyle">
-        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColor">@color/colorTextWhite</item>
         <item name="android:textSize">@dimen/text_size_normal</item>
         <item name="android:textStyle">normal</item>
     </style>
 
     <style name="ContentTextStyle">
-        <item name="android:textColor">@color/colorGrayDark</item>
+        <item name="android:textColor">@color/colorTextGrayDark</item>
         <item name="android:textSize">@dimen/text_size_normal</item>
         <item name="android:textStyle">normal</item>
     </style>
 
     <style name="MenuItemTextStyle">
-        <item name="android:textColor">@color/menu_text_color</item>
+        <item name="android:textColor">@color/menu_text_color_selector</item>
         <item name="android:textSize">@dimen/text_size_medium</item>
         <item name="android:textStyle">normal</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:layout_weight">1</item>
     </style>
-
 </resources>

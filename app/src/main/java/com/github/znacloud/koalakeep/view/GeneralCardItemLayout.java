@@ -1,6 +1,8 @@
 package com.github.znacloud.koalakeep.view;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -99,6 +101,9 @@ public class GeneralCardItemLayout extends FrameLayout implements GeneralRecycle
         mMenuIv = (ImageView) findViewById(R.id.iv_card_menu);
         mExtraTv = (TextView) findViewById(R.id.tv_extra);
         mContentTv = (TextView) findViewById(R.id.tv_card_content);
+
+        ViewCompat.setBackgroundTintList(mMenuIv,getResources().getColorStateList(R.color.menu_text_color_selector));
+        ViewCompat.setBackgroundTintMode(mMenuIv, PorterDuff.Mode.SRC_IN);
 
         //menu item
         mShareTv = (TextView)findViewById(R.id.tv_menu_share);

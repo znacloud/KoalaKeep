@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Theme Color -->
+
+    <!-- Add original color here-->
+    <!-- Base Color -->
     <color name="colorPrimary">#fbfffc</color>
     <color name="colorPrimaryDark">#eef2ef</color>
     <color name="colorAccent">#c28101</color>
-    <color name="colorTheme">#8bc34a</color>
+    <color name="colorMain">#8bc34a</color>
 
-    <!-- Text color -->
     <color name="colorGrayLight">#dedede</color>
     <color name="colorGray">#9c9c9c</color>
     <color name="colorGrayDark">#535353</color>
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#ffffff</color>
 
-    <!-- Background color -->
-    <color name="colorRedDark">#b40000</color>
+    <!-- All type color reference base color !!!-->
+    <!-- Theme Color -->
+    <color name="colorThemePrimary">@color/colorPrimary</color>
+    <color name="colorThemePrimaryDark">@color/colorPrimaryDark</color>
+    <color name="colorThemeAccent">@color/colorAccent</color>
+    <color name="colorThemeMain">@color/colorMain</color>
+
+
+    <!-- Text Color -->
+    <color name="colorTextWhite">@color/colorWhite</color>
+    <color name="colorTextBlack">@color/colorBlack</color>
+    <color name="colorTextGrayLight">@color/colorGrayLight</color>
+    <color name="colorTextGrayDark">@color/colorGrayDark</color>
+
+    <!-- Background Color -->
+    <color name="colorBgRedDark">#b40000</color>
+
+    <!-- Icon Color -->
+    <color name="colorIconNormal">@color/colorBlack</color>
+    <color name="colorIconDisabled" >@color/colorGrayDark</color>
+    <color name="colorIconPress" >@color/colorBlack</color>
 
 </resources>

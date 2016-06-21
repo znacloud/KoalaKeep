@@ -7,9 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 
 import com.github.znacloud.koalakeep.adapter.home.CardAdapter;
@@ -35,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         mMyhandler = new MyHandler();
 
         mSwipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.fresh_layout);
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorThemeAccent);
 
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

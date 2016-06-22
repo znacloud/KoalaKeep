@@ -13,6 +13,8 @@
     <color name="colorGrayDark">#535353</color>
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="colorTransBlack">#40000000</color>
+    <color name="colorRedDark">#b40000</color>
 
     <!-- All type color reference base color !!!-->
     <!-- Theme Color -->
@@ -29,11 +31,13 @@
     <color name="colorTextGrayDark">@color/colorGrayDark</color>
 
     <!-- Background Color -->
-    <color name="colorBgRedDark">#b40000</color>
+    <color name="colorBgRedDark">@color/colorRedDark</color>
+    <color name="colorBgTransBlack">@color/colorTransBlack</color>
 
     <!-- Icon Color -->
-    <color name="colorIconNormal">@color/colorBlack</color>
+    <color name="colorIconNormal">@color/colorAccent</color>
     <color name="colorIconDisabled" >@color/colorGrayDark</color>
-    <color name="colorIconPress" >@color/colorBlack</color>
+    <color name="colorIconPress" >@color/colorAccent</color>
+
 
 </resources>

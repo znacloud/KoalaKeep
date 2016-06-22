@@ -129,7 +129,6 @@ public class GeneralCardItemLayout extends FrameLayout implements GeneralRecycle
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 int action = event.getAction();
-                Log.d(TAG,"action=>"+action);
                 if(action == MotionEvent.ACTION_DOWN){
                     mStartX = event.getRawX();
                     mStartY = event.getRawY();

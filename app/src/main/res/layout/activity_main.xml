@@ -9,12 +9,48 @@
 
     <include layout="@layout/content_main" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/fab"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="bottom|end"-->
+        <!--android:layout_margin="@dimen/fab_margin"-->
+        <!--android:src="@drawable/ic_koala_white_24" />-->
+    <RelativeLayout
+        android:id="@+id/ryt_floating_bar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_koala_white_24" />
+        android:background="@color/colorBgTransBlack"
+        android:paddingLeft="@dimen/padding_xlarge"
+        android:paddingRight="@dimen/padding_xlarge"
+        android:paddingTop="@dimen/padding_medium"
+        android:paddingBottom="@dimen/padding_medium"
+        android:layout_gravity="bottom"
+        android:elevation="@dimen/elevation_little">
+        <ImageView
+            android:id="@+id/iv_user_info"
+            android:layout_width="@dimen/icon_size_medium"
+            android:layout_height="@dimen/icon_size_medium"
+            android:background="@drawable/ic_user_info"
+            android:backgroundTint="@color/icon_tint_color_selector"
+            android:layout_alignParentLeft="true"/>
+
+        <ImageView
+            android:id="@+id/iv_add_new"
+            android:layout_width="@dimen/icon_size_medium"
+            android:layout_height="@dimen/icon_size_medium"
+            android:background="@drawable/ic_add"
+            android:backgroundTint="@color/icon_tint_color_selector"
+            android:layout_centerInParent="true"/>
+
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_width="@dimen/icon_size_medium"
+            android:layout_height="@dimen/icon_size_medium"
+            android:background="@drawable/ic_more"
+            android:backgroundTint="@color/icon_tint_color_selector"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
 
 </FrameLayout>

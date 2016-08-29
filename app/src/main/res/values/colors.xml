@@ -3,10 +3,12 @@
 
     <!-- Add original color here-->
     <!-- Base Color -->
-    <color name="colorPrimary">#fbfffc</color>
-    <color name="colorPrimaryDark">#eef2ef</color>
+    <color name="colorPrimary">#c28101</color>
+    <color name="colorPrimaryDark">#ae7300</color>
     <color name="colorAccent">#c28101</color>
-    <color name="colorMain">#8bc34a</color>
+    <!--<color name="colorMain">#8bc34a</color>-->
+    <color name="colorMain">#fbfffc</color>
+    <color name="colorMainDark">#eef2ef</color>
 
     <color name="colorGrayLight">#dedede</color>
     <color name="colorGray">#9c9c9c</color>

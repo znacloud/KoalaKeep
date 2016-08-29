@@ -102,7 +102,7 @@ public class GeneralCardItemLayout extends FrameLayout implements GeneralRecycle
         mExtraTv = (TextView) findViewById(R.id.tv_extra);
         mContentTv = (TextView) findViewById(R.id.tv_card_content);
 
-        ViewCompat.setBackgroundTintList(mMenuIv,getResources().getColorStateList(R.color.menu_text_color_selector));
+        ViewCompat.setBackgroundTintList(mMenuIv,getResources().getColorStateList(R.color.icon_tint_color_selector));
         ViewCompat.setBackgroundTintMode(mMenuIv, PorterDuff.Mode.SRC_IN);
 
         //menu item
